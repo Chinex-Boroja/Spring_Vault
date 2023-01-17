@@ -1,10 +1,10 @@
-package com.chinex.spring_starter;
+package com.chinex.simple_mvc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringStarterApplicationTests {
+class SimpleMvcApplicationTests {
 
     @Test
     void contextLoads() {
