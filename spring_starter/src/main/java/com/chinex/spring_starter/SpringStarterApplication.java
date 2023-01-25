@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,9 +14,11 @@ public class SpringStarterApplication {
     public static void main(String[] args) {
 
     ApplicationContext context = SpringApplication.run(SpringStarterApplication.class, args);
-    HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
-    helloWorld.sayHello();
+    InjectedByConstructorService constructorService = (InjectedByConstructorService) context.getBean("injectedByConstructorService");
+    constructorService.getMessage();
 
+    SetterBasedService setterBasedService = (SetterBasedService) context.getBean("setterBasedService");
+    setterBasedService.getMessage();
     }
 
     // Add a method that sends a greeting
