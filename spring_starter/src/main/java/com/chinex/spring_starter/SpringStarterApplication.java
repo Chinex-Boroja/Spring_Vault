@@ -1,5 +1,6 @@
 package com.chinex.spring_starter;
 
+import com.chinex.spring_starter.controller.GreetingController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -12,13 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpringStarterApplication {
 
     public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(SpringStarterApplication.class, args);
+        InjectedByConstructorService constructorService = (InjectedByConstructorService) context.getBean("injectedByConstructorService");
+        constructorService.getMessage();
 
-    ApplicationContext context = SpringApplication.run(SpringStarterApplication.class, args);
-    InjectedByConstructorService constructorService = (InjectedByConstructorService) context.getBean("injectedByConstructorService");
-    constructorService.getMessage();
+        SetterBasedService setterBasedService = (SetterBasedService) context.getBean("setterBasedService");
+        setterBasedService.getMessage();
 
-    SetterBasedService setterBasedService = (SetterBasedService) context.getBean("setterBasedService");
-    setterBasedService.getMessage();
+        GreetingController greetingController = (GreetingController) context.getBean("greetingController");
+        greetingController.sayHello();
     }
 
     // Add a method that sends a greeting
